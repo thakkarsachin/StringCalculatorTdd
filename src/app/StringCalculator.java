@@ -5,11 +5,12 @@ public class StringCalculator {
         if(text.equals("")==true)
             return 0;
         else{
+            int sum = 0;
             String nums[] = text.split(",");
-            if(nums.length==1)
-                return Integer.parseInt(nums[0]);
-            else 
-                return Integer.parseInt(nums[0])+Integer.parseInt(nums[1]);
+            for (String s : nums) {
+                sum += Integer.parseInt(s);
+            }
+            return sum;
         }
     }
 }
