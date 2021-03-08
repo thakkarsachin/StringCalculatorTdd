@@ -6,7 +6,7 @@ public class StringCalculator {
             return 0;
         else{
             int sum = 0;
-            String nums[] = text.split(",");
+            String nums[] = text.split("[,\n]");
             for (String s : nums) {
                 sum += Integer.parseInt(s);
             }

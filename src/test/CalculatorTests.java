@@ -25,4 +25,9 @@ public class CalculatorTests {
     public void handleSumOfMultipleNumbers() {
         assertEquals(9, StringCalculator.add("2,3,4"));
     }
+
+    @Test
+    public void handleMultipleDelimiters() {
+        assertEquals(6, StringCalculator.add("1\n2,3"));
+    }
 }
