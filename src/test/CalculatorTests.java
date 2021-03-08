@@ -33,6 +33,29 @@ public class CalculatorTests {
 
     @Test
     public void handleCustomDelimiters() {
-        assertEquals(10, StringCalculator.add("//;\n1;2;3;4"));
+        assertEquals(10, StringCalculator.add("//$\n1$2$3$4"));
     }
+
+    @Test
+    public void throwErrorOnNegativeNumber() {
+        try{
+            StringCalculator.add("-2,3,3");
+            fail();
+        }
+        catch(RuntimeException e){
+            assertEquals("negatives not allowed : -2", e.getMessage());
+        }
+    }
+
+    @Test
+    public void throwErrorOnMultipleNegativeNumber() {
+        try{
+            StringCalculator.add("-1,-2,3");
+            fail();
+        }
+        catch(RuntimeException e){
+            assertEquals("negatives not allowed : -1 -2", e.getMessage());
+        }
+    }
+
 }
