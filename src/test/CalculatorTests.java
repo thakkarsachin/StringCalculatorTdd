@@ -63,4 +63,9 @@ public class CalculatorTests {
         assertEquals(5, StringCalculator.add("2,3,1002"));
     }
 
+    @Test
+    public void handleCustomDelimiterOfAnyLength() {
+        assertEquals(6, StringCalculator.add("//[***]\n1***2***3"));
+    }
+
 }

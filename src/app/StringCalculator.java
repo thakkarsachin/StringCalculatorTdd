@@ -12,6 +12,8 @@ public class StringCalculator {
             String nums[] = {};
             if (text.startsWith("//")){
                 String delim = text.substring(2, text.indexOf("\n"));
+                if(delim.charAt(0)=='[' && delim.charAt(delim.length()-1)==']')
+                    delim = delim.substring(1,delim.length()-1);
                 nums = text.substring(text.indexOf("\n")+1).split(Pattern.quote(delim));
             }
             else{
