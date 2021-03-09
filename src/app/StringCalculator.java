@@ -1,7 +1,7 @@
 
 package app;
 
-import java.util.regex.Pattern;
+import java.util.regex.*;
 
 public class StringCalculator {
     public static int add(String text) {
@@ -10,11 +10,20 @@ public class StringCalculator {
         else{
             int sum = 0;
             String nums[] = {};
+            String finalDelim = "";
+
             if (text.startsWith("//")){
                 String delim = text.substring(2, text.indexOf("\n"));
-                if(delim.charAt(0)=='[' && delim.charAt(delim.length()-1)==']')
-                    delim = delim.substring(1,delim.length()-1);
-                nums = text.substring(text.indexOf("\n")+1).split(Pattern.quote(delim));
+                Pattern pt = Pattern.compile("\\[(.*?)\\]");
+                Matcher match = pt.matcher(delim);
+                while(match.find()){
+                    finalDelim = finalDelim + Pattern.quote(match.group(1)) + "|";
+                }
+                if(finalDelim.equals(""))
+                    nums = text.substring(text.indexOf("\n")+1).split(Pattern.quote(delim));
+                else{
+                    nums = text.substring(text.indexOf("\n")+1).split(finalDelim.substring(0,finalDelim.length()-1));
+                }
             }
             else{
                 nums = text.split("[,\n]");
