@@ -58,4 +58,9 @@ public class CalculatorTests {
         }
     }
 
+    @Test
+    public void ignoreNumberGreaterThanThousand() {
+        assertEquals(5, StringCalculator.add("2,3,1002"));
+    }
+
 }
